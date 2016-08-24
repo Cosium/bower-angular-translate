@@ -1,5 +1,5 @@
 /*!
- * angular-translate - v2.11.0 - 2016-03-20
+ * angular-translate - v2.11.01 - 2016-08-24
  * 
  * Copyright (c) 2016 The angular-translate team, Pascal Precht; Licensed MIT
  */
@@ -403,7 +403,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
         }
       };
 
-  var version = '2.11.0';
+  var version = '2.11.01';
 
   // tries to determine the browsers language
   var getFirstBrowserLanguage = function () {
@@ -2220,7 +2220,7 @@ function $translate($STORAGE_KEY, $windowProvider, $translateSanitizationProvide
             return translation;
           }, function (key) {
             // find first available fallback language if that request has failed
-            if (!$uses && $fallbackLanguage && $fallbackLanguage.length > 0) {
+            if (!$uses && $fallbackLanguage && $fallbackLanguage.length > 0 && $fallbackLanguage[0] !== key) {
               return $translate.use($fallbackLanguage[0]).then(deferred.resolve, deferred.reject);
             } else {
               return deferred.reject(key);
